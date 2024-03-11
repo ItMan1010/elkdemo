@@ -56,17 +56,17 @@
         <topic>elktopic</topic>
         <keyingStrategy class="com.github.danielwegener.logback.kafka.keying.NoKeyKeyingStrategy"/>
         <deliveryStrategy class="com.github.danielwegener.logback.kafka.delivery.AsynchronousDeliveryStrategy"/>
-        <producerConfig>bootstrap.servers=192.168.48.129:9092</producerConfig>
+        <producerConfig>bootstrap.servers=192.168.48.120:9092</producerConfig>
         <!-- don't wait for a broker to ack the reception of a batch.  -->
         <producerConfig>acks=0</producerConfig>
     </appender>
 
-    <appender name="asyncFileAppender" class="ch.qos.logback.classic.AsyncAppender">
-        <queueSize>${logback.queue.size}</queueSize>
-        <neverBlock>true</neverBlock>
-        <appender-ref ref="fileAppender"/>
+<!--    <appender name="asyncFileAppender" class="ch.qos.logback.classic.AsyncAppender">-->
+<!--        <queueSize>${logback.queue.size}</queueSize>-->
+<!--        <neverBlock>true</neverBlock>-->
+<!--        <appender-ref ref="fileAppender"/>-->
 <!--        <appender-ref ref="kafkaAppender"/>-->
-    </appender>
+<!--    </appender>-->
 
     <!--
         Log level is divided from low to high: TRACE < DEBUG < INFO < WARN < ERROR < FATAL
@@ -74,6 +74,6 @@
     -->
     <root level="INFO">
         <appender-ref ref="consoleAppender"/>
-        <appender-ref ref="asyncFileAppender"/>
+        <appender-ref ref="kafkaAppender"/>
     </root>
 </configuration>
